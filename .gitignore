@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+bouncer/dump/
+.env
+.vscode
+.DS_Store
+env

@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=expensedb
+    volumes:
+      - "expensedb:/var/lib/postgresql/data"
+
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - "./expense:/app"
+    env_file:
+      - .env
+    ports:
+      - "8100:8000"
+    depends_on:
+      - db
+
+volumes:
+  expensedb:
