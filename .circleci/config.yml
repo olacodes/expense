@@ -34,6 +34,7 @@ jobs:
           name: install postgresql for primary container
           command: |
             sudo apt-get update
+            pip install --upgrade pip
             pip install psycopg2
       - run:
           name: install dependencies
