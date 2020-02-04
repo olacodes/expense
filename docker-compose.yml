@@ -17,7 +17,7 @@ services:
     volumes:
       - "./expense:/app"
     env_file:
-      - .env
+      - ".env"
     ports:
       - "8100:8000"
     depends_on:
