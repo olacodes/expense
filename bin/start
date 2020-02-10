@@ -1,0 +1,15 @@
+# Shebang
+#!/bin/bash
+
+# if in virtual environment deactivate it
+deactivate -d
+
+# activate virtual environment
+bin/venv
+
+# start the container
+docker-compose up
+
+
+
+
