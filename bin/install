@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Install the package
+pip install $*
+
+pip freeze > requirements.txt
+
+docker-compose build
