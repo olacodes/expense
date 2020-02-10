@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pip uninstall $*
+
+pip freeze > requirements.txt
+
+docker-compose build
+
+bin/start
