@@ -12,7 +12,7 @@ class TestUser(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_user_login(self):
-        MockData.setup()
+        MockData.create_user()
         url = reverse('user_login')
         response = self.client.post(url, MockData.user_data(), format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
