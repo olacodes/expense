@@ -15,5 +15,4 @@ def user_validation(table_name, data):
         return validate_email
     elif validate_password != True:
         return validate_password
-
     return True

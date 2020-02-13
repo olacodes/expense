@@ -35,6 +35,7 @@ class UserRegistration(APIView):
             user.save()
             refresh = RefreshToken.for_user(User.objects.get(username=data['username']))
             token = {
+                'refresh': str(refresh),
                 'access': str(refresh.access_token)
             }
             return Response({'message': 'user successfully created', 'token':token} , status=status.HTTP_201_CREATED)

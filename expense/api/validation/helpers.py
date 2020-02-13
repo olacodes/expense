@@ -1,4 +1,5 @@
 import re
+
 # must be a valid email address
 email_regex =  "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 
@@ -10,6 +11,7 @@ username_regex = '[A-Za-z\d._@#$%^&(!)]{5,}$'
 
 price_regex = '^([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$'
 
+# Regex Validator
 def regex_validator(value, regex):
     if not value:
         return False

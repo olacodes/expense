@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import Token
 from rest_framework_simplejwt.models import TokenUser
 
 from ..validation.login_validation import LoginValidation
@@ -41,9 +42,11 @@ class UserLogin(APIView):
                 elif not (bcrypt.checkpw(password.encode('utf-8'), db_password.split("'")[1].encode('utf-8'))):
                     return Response({'message: password is incorect'}, status=status.HTTP_400_BAD_REQUEST)
                 else:
+
+
                     refresh = RefreshToken.for_user(User.objects.get(username=data['username']))
                     token = {
-                        'access': str(refresh.access_token)
+                        'refresh': str(refresh),
+                        'access': str(refresh.access_token),
                     }
-                    return Response({'message': 'success', 'token':token}, status=status.HTTP_200_OK)
-
+                    return Response({'message': 'success', 'token':token,}, status=status.HTTP_200_OK)

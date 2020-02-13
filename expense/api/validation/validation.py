@@ -1,4 +1,7 @@
-from .helpers import username_regex, password_regex, email_regex, regex_validator
+from .helpers import (
+    username_regex, password_regex, 
+    email_regex, regex_validator, price_regex
+)
 from rest_framework.response import Response
 from rest_framework import status
 
