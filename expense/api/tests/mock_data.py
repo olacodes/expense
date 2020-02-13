@@ -6,19 +6,18 @@ class MockData:
     @classmethod
     def user_data(cls):
         return {
-            'id': 1,
             'name': 'olatunde',
             'username': 'sodiq',
             'email': 'olatundesodiq@gmail.com',
             'password': 'olatunde123'
         }
+
     @classmethod
     def create_user(cls):
         data = MockData.user_data()
         hashed = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
 
         user = User(
-            id = data['id'],
             name = data['name'],
             username = data['username'],
             email = data['email'],
@@ -30,10 +29,17 @@ class MockData:
     @classmethod
     def expense_data(cls):
         return {
-            'user_id': 1,
             'value': '2000',
             'reason': 'Testin testing'
         }
+
+    @classmethod
+    def update_data(cls):
+        return {
+            'value': '400',
+            'reason': 'Test Update'
+        }
+
     @classmethod
     def create_user_expense(cls):
         hashed = bcrypt.hashpw('password'.encode('utf-8'), bcrypt.gensalt())
@@ -52,11 +58,9 @@ class MockData:
     def create_expense(cls):
         data = MockData.expense_data()
         user = MockData.create_user_expense()
-        expense = Expense(
+        expense = Expense.objects.create(
             user_id = user,
             value = data['value'],
             reason = data['reason']
         )
-
-
-
+        return expense
