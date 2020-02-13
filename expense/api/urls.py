@@ -7,10 +7,13 @@ from .views import (
     edit_expense,
     delete_expense
 )
-
-
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 urlpatterns = [
-
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', user_registration.UserRegistration.as_view(), name='user_registration'),
     path('login/', user_login.UserLogin.as_view(), name='user_login' ),
     path('<int:user_id>/expense/', expense.UserExpense.as_view(), name='expense_list'),

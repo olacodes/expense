@@ -1,4 +1,4 @@
-from rest_framework.authtoken.models import Token
+# from rest_framework.authtoken.models import Token
 from rest_framework import serializers
 
 from ..models.user import User
@@ -30,6 +30,6 @@ class UserSerializer(serializers.ModelSerializer):
             user.set_password(password)
 
             user.save()
-            Token.objects.create(user=user)
+            # Token.objects.create(user=user)
             return user
             
