@@ -9,7 +9,7 @@ from ..models.user import User
 from ..serializers.expense_serializer import ExpenseSerializer
 
 class UserExpense(APIView):
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
     
     def get(self, response, user_id):
         user = get_object_or_404(User.objects.all(), id=user_id)
