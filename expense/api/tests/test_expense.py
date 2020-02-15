@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase, APIClient
 from django.urls import reverse
 from rest_framework import status
+from rest_framework_simplejwt.models import TokenUser
 from .mock_data import MockData
 
 
@@ -10,6 +11,7 @@ class TestExpense(APITestCase):
 
     def test_get_all_expense(self):
         user = MockData.create_user()
+        self.client.force_authenticate(TokenUser)
         response = self.client.get(f'/api/{user.id}/expense/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
     
