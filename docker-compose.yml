@@ -5,9 +5,7 @@ services:
     image: postgres
     environment:
       - POSTGRES_DB=expensedb
-      - POSTGRES_USER='postgres'
-      - POSTGRES_PASSWORD='postgres'
-      
+
     volumes:
       - "expensedb:/var/lib/postgresql/data"
 
