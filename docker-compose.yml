@@ -5,6 +5,7 @@ services:
     image: postgres
     environment:
       - POSTGRES_DB=expensedb
+
     volumes:
       - "expensedb:/var/lib/postgresql/data"
 

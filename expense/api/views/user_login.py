@@ -14,6 +14,8 @@ from ..serializers.user_serializer import UserSerializer
 class UserLogin(APIView):
 
     serializer_class = UserSerializer
+    authentication_classes = ()
+    permission_classes = ()
 
     def post(self, request,):
 

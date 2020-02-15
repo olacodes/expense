@@ -18,6 +18,7 @@ jobs:
         name: db
         environment:
           POSTGRES_DB: expensedb
+          POSTGRES_HOST_AUTH_METHOD: trust
 
 
       # Specify service dependencies here if necessary
