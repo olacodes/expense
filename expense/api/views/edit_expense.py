@@ -20,7 +20,7 @@ class EditExpense(APIView):
 
         # check if user have access to edit the expense
         if expense_object.user_id.id != user_id:
-            return Response({'User Error': 'You do not have access to edit this expense'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'You do not have access to edit this expense'}, status=status.HTTP_400_BAD_REQUEST)
         
         # Get the modified expense
         data = request.data
