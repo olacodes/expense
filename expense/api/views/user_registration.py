@@ -26,10 +26,10 @@ class UserRegistration(APIView):
                 data['password'].encode('utf-8'), bcrypt.gensalt()
                 )
             user = User.objects.create(
-                name = data['name'],
-                username = data['username'],
+                name = data['name'].strip(),
+                username = data['username'].strip(),
                 password = hashed,
-                email = data['email']
+                email = data['email'].strip()
             )
             # save user to database
             user.save()

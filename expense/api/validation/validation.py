@@ -23,7 +23,7 @@ def username_validator(table_name, username):
     if not username.strip():
         return Response({'username_error': 'username cannot be empty'}, status=status.HTTP_400_BAD_REQUEST)
     if regex_validator(username, username_regex) != True:
-        return Response({'username_error': 'username must bbe minimum of five character without space'})
+        return Response({'username_error': 'username must bbe minimum of five character without space'}, status=status.HTTP_400_BAD_REQUEST)
     elif check_if_username_exist(table_name, username) ==True:
         return Response({'username_error': 'username already exist'}, status=status.HTTP_400_BAD_REQUEST)
     return True

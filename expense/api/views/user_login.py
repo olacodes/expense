@@ -26,7 +26,7 @@ class UserLogin(APIView):
         if validate_empty_fields != True:
             return validate_empty_fields
         else:
-            validate_user =  validate_login.check_user_exist(User, data['username'])
+            validate_user =  validate_login.check_user_exist(User, data['username'].strip())
 
             if validate_user == False:
                 return Response({'message': 'username and password do not match'}, status=status.HTTP_400_BAD_REQUEST)
@@ -35,8 +35,10 @@ class UserLogin(APIView):
                 db_username = validate_user.username
                 db_password = validate_user.password
 
-                username = data.get('username')
-                password = data['password']
+                username = data.get('username').strip()
+                password = data['password'].strip()
+
+                print(username)
     
                 if username != db_username:
                     return Response({'message: username does not exist'}, status=status.HTTP_400_BAD_REQUEST)
@@ -46,7 +48,7 @@ class UserLogin(APIView):
                 else:
 
 
-                    refresh = RefreshToken.for_user(User.objects.get(username=data['username']))
+                    refresh = RefreshToken.for_user(User.objects.get(username=data['username'].strip()))
                     token = {
                         'refresh': str(refresh),
                         'access': str(refresh.access_token),
