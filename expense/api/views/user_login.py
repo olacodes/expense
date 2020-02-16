@@ -37,9 +37,7 @@ class UserLogin(APIView):
 
                 username = data.get('username').strip()
                 password = data['password'].strip()
-
-                print(username)
-    
+                    
                 if username != db_username:
                     return Response({'message: username does not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
