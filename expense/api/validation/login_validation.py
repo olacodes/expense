@@ -6,9 +6,9 @@ class LoginValidation:
         self.data = data
 
     def check_empty_fields(self):
-        if self.data.get('username') == None:
+        if self.data.get('username').strip() == None:
             return Response({'message: Username cannot be empty'}, status=status.HTTP_400_BAD_REQUEST)
-        elif self.data.get('password') == None:
+        elif self.data.get('password').strip() == None:
             return Response({'message: password cannot be empty'}, status=status.HTTP_400_BAD_REQUEST)
         else:
             return True
