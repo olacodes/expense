@@ -32,7 +32,7 @@ class NewExpense(APIView):
 
         expense = Expense.objects.create(
             value = data['value'],
-            reason = data['reason'],
+            reason = data['reason'].capitalize(),
             user_id = user_id
         )
 
